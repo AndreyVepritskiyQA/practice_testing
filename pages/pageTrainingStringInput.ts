@@ -1,20 +1,37 @@
-import { Locator, Page } from '@playwright/test';
-import { BasePage } from './BasePage';
+import { expect, Locator, Page } from '@playwright/test';
 
 export class pageTrainStringInput {
   //Класс, который определяет локаторы страницы и доступные методы для тестов (с реализацией внутри класса)
+  private baseURL: string = 'https://www.qa-practice.com/elements/input/simple';
   private page: Page;
-  readonly url: string = 'https://www.qa-practice.com/elements/input/simple';
   readonly textInput: Locator;
   readonly succesString: Locator;
-  readonly responseString: Locator;
+  readonly errorString: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.textInput = page.locator('#id_text_string');
     this.succesString = page.locator('#result-text');
-    this.responseString = page.locator('#error_1_id_text_string');
+    this.errorString = page.locator('#error_1_id_text_string');
   }
 
   //Методы для тестов
+
+  async openURL() {
+    await this.page.goto(this.baseURL);
+    await this.textInput.waitFor({ timeout: 10000 });
+  }
+
+  async fillForm(enterText: string) {
+    await this.textInput.fill(enterText);
+    await this.textInput.press('Enter');
+  }
+
+  async validationInputTrue(enterText: string) {
+    await expect(this.errorString).toHaveText(enterText);
+  }
+
+  async validationInputError(errorMessage: string) {
+    await expect(this.errorString).toHaveText(errorMessage);
+  }
 }
