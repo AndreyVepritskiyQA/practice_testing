@@ -5,13 +5,13 @@ export class pageTrainStringInput {
   private baseURL: string = 'https://www.qa-practice.com/elements/input/simple';
   private page: Page;
   readonly textInput: Locator;
-  readonly succesString: Locator;
+  readonly successString: Locator;
   readonly errorString: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.textInput = page.locator('#id_text_string');
-    this.succesString = page.locator('#result-text');
+    this.successString = page.locator('#result-text');
     this.errorString = page.locator('#error_1_id_text_string');
   }
 
@@ -28,7 +28,7 @@ export class pageTrainStringInput {
   }
 
   async validationInputTrue(enterText: string) {
-    await expect(this.errorString).toHaveText(enterText);
+    await expect(this.successString).toHaveText(enterText);
   }
 
   async validationInputError(errorMessage: string) {
