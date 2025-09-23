@@ -1,0 +1,22 @@
+{
+  "name": "practice_testing",
+  "version": "1.0.0",
+  "description": "my training automated tests for the QA practice website",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreivepritskiy-ship-it/practice_testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreivepritskiy-ship-it/practice_testing/issues"
+  },
+  "homepage": "https://github.com/andreivepritskiy-ship-it/practice_testing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.5.2"
+  }
+}
