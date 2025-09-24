@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
 
-export class pageTrainStringInput {
+export class StringInputPage {
   //Класс, который определяет локаторы страницы и доступные методы для тестов (с реализацией внутри класса)
   private baseURL: string = 'https://www.qa-practice.com/elements/input/simple';
   private page: Page;
