@@ -16,10 +16,11 @@ export class PageButtonSimple {
 
   async OpenURL() {
     await this.page.goto(this.baseURL);
+    await this.buttonLocator.waitFor({ timeout: 10000 });
   }
 
-  async ValidateButtonLabel(label: string) {
-    await expect(this.buttonLocator).toHaveText(label);
+  async ValidateButtonLabel(labelText: string) {
+    await expect(this.buttonLocator).toHaveText(labelText);
   }
 
   async ClickButton() {
