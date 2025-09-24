@@ -9,7 +9,7 @@ test.describe('Тестирование поля ввода текста', () =>
   });
   test.describe('Позитивные тестовые сценарии', () => {
     test('Ввод валидных данных в поле ввода', async () => {
-      let validText: string = 'Test1ng-_'; //Указываем текст для проверки
+      let validText: string = 'Test1nG-_'; //Указываем текст для проверки
       await basicPage.fillForm(validText);
       await basicPage.validationInputTrue(validText);
     });
@@ -25,9 +25,21 @@ test.describe('Тестирование поля ввода текста', () =>
       await basicPage.fillForm(validText);
       await basicPage.validationInputTrue(validText);
     });
+
+    test('Ввод валидного значения после пробелов', async () => {
+      let validText: string = '     Test';
+      await basicPage.fillForm(validText);
+      await basicPage.validationInputTrue(validText);
+    });
   });
 
   test.describe('Негативные тестовые сценарии', () => {
+    test('Ввод пустого значения с использованием пробелов', async () => {
+      let invalidText: string = '    ';
+      await basicPage.fillForm(invalidText);
+      await basicPage.validationInputError('This field is required.');
+    });
+
     test('Значение меньше допустимого минимума', async () => {
       let invalidText: string = '1';
       await basicPage.fillForm(invalidText);
@@ -42,6 +54,14 @@ test.describe('Тестирование поля ввода текста', () =>
 
     test('Ввод невалидных символов', async () => {
       let invalidText: string = '!@#';
+      await basicPage.fillForm(invalidText);
+      await basicPage.validationInputError(
+        'Enter a valid string consisting of letters, numbers, underscores or hyphens.',
+      );
+    });
+
+    test('Ввод текста с пробелом', async () => {
+      let invalidText: string = 'My Test';
       await basicPage.fillForm(invalidText);
       await basicPage.validationInputError(
         'Enter a valid string consisting of letters, numbers, underscores or hyphens.',
