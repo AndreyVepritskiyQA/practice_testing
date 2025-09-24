@@ -12,7 +12,7 @@
 
 ##Структура проекта
 
-tests/ - директория с автотестами
-pages/ - Page Object модели
-testReport/ - мои отчеты о проведенном тестировании
-playwright.config.ts - конфигурация Playwright
+1. tests/ - директория с автотестами
+2. pages/ - Page Object модели
+3. testReport/ - мои отчеты о проведенном тестировании
+4. playwright.config.ts - конфигурация Playwright
