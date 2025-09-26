@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { StringInputPage } from '../pages/Page_String_Input';
+import { PageInputString } from '../pages/Page_String_Input';
 
-let basePage: StringInputPage;
+let basePage: PageInputString;
 
 test.describe('Тестирование поля ввода текста', () => {
   test.beforeEach(async ({ page }) => {
-    basePage = new StringInputPage(page); //Новую страницу создаем перед каждым тестом
+    basePage = new PageInputString(page); //Новую страницу создаем перед каждым тестом
     await basePage.openURL(); //Открывает вкладку перед каждым тестом
   });
   test.describe('Позитивные тестовые сценарии', () => {

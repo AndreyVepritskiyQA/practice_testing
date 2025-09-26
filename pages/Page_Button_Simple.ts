@@ -8,8 +8,8 @@ export class PageButtonSimple {
 
   constructor(page: Page) {
     this.page = page;
-    this.buttonLocator = page.locator('#submit-id-submit');
-    this.responseLocator = page.locator('#result-text');
+    this.buttonLocator = page.getByRole('button', { name: 'Click' });
+    this.responseLocator = page.getByText('Submitted');
   }
 
   //Методы для тестов

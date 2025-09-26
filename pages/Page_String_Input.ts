@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
 
-export class StringInputPage {
+export class PageInputString {
   //Класс, который определяет локаторы страницы и доступные методы для тестов (с реализацией внутри класса)
   private baseURL: string = 'https://www.qa-practice.com/elements/input/simple';
   private page: Page;
@@ -10,7 +10,7 @@ export class StringInputPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.textInput = page.locator('#id_text_string');
+    this.textInput = page.getByRole('textbox', { name: 'text_string' });
     this.successString = page.locator('#result-text');
     this.errorString = page.locator('#error_1_id_text_string');
   }

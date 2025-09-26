@@ -17,5 +17,12 @@ test.describe('Тестирование кнопки', () => {
       await basePage.ClickButton();
       await basePage.ValidateResponse(responseText);
     });
+    test('Повторное нажатие кнопки и проверка валидности ответа', async () => {
+      let responseText: string = 'Submitted';
+      await basePage.ClickButton();
+      await basePage.ValidateResponse(responseText);
+      await basePage.ClickButton();
+      await basePage.ValidateResponse(responseText);
+    });
   });
 });
